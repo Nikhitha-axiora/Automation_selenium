@@ -1,0 +1,93 @@
+package switch_to;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class alert {
+
+	public static void main(String[] args) {
+		
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+
+		        // =====================================================
+		        // SIMPLE ALERT
+		        // =====================================================
+
+		        driver.findElement(
+		                By.xpath("//button[contains(text(),'Click for JS Alert')]"))
+		                .click();
+
+		        Alert simpleAlert = driver.switchTo().alert();
+
+		        // Get Alert Text
+
+		        System.out.println("Simple Alert Text : "
+		                + simpleAlert.getText());
+
+		        // Accept Alert
+
+		        simpleAlert.accept();
+
+		        // =====================================================
+		        // CONFIRM ALERT
+		        // =====================================================
+
+		        driver.findElement(
+		                By.xpath("//button[contains(text(),'Click for JS Confirm')]"))
+		                .click();
+
+		        Alert confirmAlert = driver.switchTo().alert();
+
+		        System.out.println("Confirm Alert Text : "
+		                + confirmAlert.getText());
+
+		        // Dismiss Alert
+
+		        confirmAlert.dismiss();
+
+		        // Verify Result
+
+		        String confirmResult = driver.findElement(
+		                By.id("result")).getText();
+
+		        System.out.println(confirmResult);
+
+		        // =====================================================
+		        // PROMPT ALERT
+		        // =====================================================
+
+		        driver.findElement(
+		                By.xpath("//button[contains(text(),'Click for JS Prompt')]"))
+		                .click();
+
+		        Alert promptAlert = driver.switchTo().alert();
+
+		        System.out.println("Prompt Alert Text : "
+		                + promptAlert.getText());
+
+		        // Send Text
+
+		        promptAlert.sendKeys("Nikki");
+
+		        // Accept Alert
+
+		        promptAlert.accept();
+
+		        // Verify Prompt Result
+
+		        String promptResult = driver.findElement(
+		                By.id("result")).getText();
+
+		        System.out.println(promptResult);
+
+		        driver.quit();
+		    }
+		
+
+}
