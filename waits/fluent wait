@@ -1,0 +1,64 @@
+package Waits;
+
+import java.time.Duration;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+public class fluentwait {
+
+	public static void main(String[] args) {
+		 ChromeOptions options = new ChromeOptions();
+
+	        options.addArguments("--disable-notifications");
+
+	        WebDriver driver = new ChromeDriver(options);
+
+	        driver.manage().window().maximize();
+
+	        driver.manage().deleteAllCookies();
+
+	        driver.get("https://www.amazon.in/");
+//	        fluent wait
+	        Wait<WebDriver> wait = new FluentWait<>(driver)
+
+	                .withTimeout(Duration.ofSeconds(20))
+
+	                .pollingEvery(Duration.ofMillis(500))
+
+	                .ignoring(NoSuchElementException.class);
+
+
+//searchbox
+
+	        WebElement searchBox = wait.until(webDriver ->
+	        webDriver.findElement(
+	                By.id("twotabsearchtextbox")));
+	        searchBox.sendKeys("Laptop");
+
+//	       search button
+	        
+	        WebElement searchButton = wait.until(webDriver ->
+	                webDriver.findElement(
+	                        By.id("nav-search-submit-button")));
+
+	        searchButton.click();
+
+//	       first button
+	        WebElement firstProduct = wait.until(webDriver ->
+	                webDriver.findElement(
+	                        By.xpath("(//h2/span)[1]")));
+
+	        System.out.println(firstProduct.getText());
+
+	        driver.quit();
+
+	}
+
+}
