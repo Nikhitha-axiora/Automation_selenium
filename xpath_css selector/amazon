@@ -1,0 +1,311 @@
+package xpath_cssSelector;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class amazon {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		   
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://www.amazon.in/");
+
+		        Thread.sleep(3000);
+		        
+		        // Relative XPath with Attributes
+		      
+		        System.out.println(driver.findElement(
+		                By.xpath("//input[@id='twotabsearchtextbox']"))
+		                .getAttribute("placeholder"));
+
+		        
+		        System.out.println(driver.findElement(
+		                By.xpath("//input[@name='field-keywords']"))
+		                .getAttribute("name"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.xpath("//select[@id='searchDropdownBox']"))
+		                .getAttribute("title"));
+
+		     
+		        System.out.println(driver.findElement(
+		                By.xpath("//a[@id='nav-logo-sprites']"))
+		                .getAttribute("href"));
+
+		    
+		        System.out.println(driver.findElement(
+		                By.xpath("//a[@id='nav-cart']"))
+		                .getAttribute("aria-label"));
+
+		      
+		        System.out.println(driver.findElement(
+		                By.xpath("//span[@id='nav-link-accountList-nav-line-1']"))
+		                .getText());
+
+		     
+		        System.out.println(driver.findElement(
+		                By.xpath("//form[@id='nav-search-bar-form']"))
+		                .getAttribute("class"));
+
+		        
+		        System.out.println(driver.findElement(
+		                By.xpath("//div[@id='nav-xshop']"))
+		                .getAttribute("id"));
+
+		        // contains()
+
+		       
+		        System.out.println(driver.findElement(
+		                By.xpath("//input[contains(@id,'search')]"))
+		                .getAttribute("id"));
+
+		      
+		        System.out.println(driver.findElement(
+		                By.xpath("//div[contains(@id,'nav')]"))
+		                .getAttribute("id"));
+
+		     
+		        System.out.println(driver.findElement(
+		                By.xpath("//span[contains(text(),'Account')]"))
+		                .getText());
+
+		    
+		        System.out.println(driver.findElement(
+		                By.xpath("//a[contains(@href,'signin')]"))
+		                .getAttribute("href"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.xpath("//div[contains(@class,'nav')]"))
+		                .getAttribute("class"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.xpath("//form[contains(@id,'search')]"))
+		                .getAttribute("id"));
+
+		        
+		        System.out.println(driver.findElement(
+		                By.xpath("//select[contains(@id,'search')]"))
+		                .getAttribute("id"));
+
+		        // starts-with()
+
+		        System.out.println(driver.findElement(
+		                By.xpath("//div[starts-with(@id,'nav')]"))
+		                .getAttribute("id"));
+
+		    
+		        System.out.println(driver.findElement(
+		                By.xpath("//input[starts-with(@id,'two')]"))
+		                .getAttribute("id"));
+
+		        
+		        System.out.println(driver.findElement(
+		                By.xpath("//span[starts-with(@id,'nav')]"))
+		                .getAttribute("id"));
+
+		      
+		        System.out.println(driver.findElement(
+		                By.xpath("//form[starts-with(@id,'nav')]"))
+		                .getAttribute("id"));
+
+		        // Parent / Child / Sibling
+
+		        
+		        System.out.println(driver.findElement(
+		                By.xpath("//div[@id='nav-belt']/child::div"))
+		                .getAttribute("class"));
+
+		       System.out.println(driver.findElement(
+		                By.xpath("//form[@id='nav-search-bar-form']/child::div"))
+		                .getAttribute("class"));
+
+		        
+		        System.out.println(driver.findElement(
+		                By.xpath("//input[@id='twotabsearchtextbox']/parent::div"))
+		                .getAttribute("class"));
+
+		       
+////		        System.out.println(driver.findElement(
+//		                By.xpath("//select[@id='searchDropdownBox']/following-sibling::input"))
+//		                .getAttribute("type"));
+
+		       
+//		        System.out.println(driver.findElement(
+//		                By.xpath("//input[@id='nav-search-submit-button']/preceding-sibling::div"))
+//		                .getAttribute("class"));
+
+		     
+		        System.out.println(driver.findElement(
+		                By.xpath("//div[@id='nav-tools']/child::a"))
+		                .getAttribute("href"));
+
+//		        css selectors
+		        
+		        System.out.println("=========== CSS SELECTOR PRACTICE ===========");
+
+		        
+		        // ID Selectors
+		    
+
+		     
+		        System.out.println(driver.findElement(
+		                By.cssSelector("#twotabsearchtextbox"))
+		                .getAttribute("placeholder"));
+
+		        
+		        System.out.println(driver.findElement(
+		                By.cssSelector("#nav-search-submit-button"))
+		                .getAttribute("type"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.cssSelector("#searchDropdownBox"))
+		                .getAttribute("title"));
+
+		      
+		        System.out.println(driver.findElement(
+		                By.cssSelector("#nav-logo-sprites"))
+		                .getAttribute("href"));
+
+		      
+		        System.out.println(driver.findElement(
+		                By.cssSelector("#nav-cart"))
+		                .getAttribute("aria-label"));
+
+		        // Class Selectors
+		    
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector(".nav-search-field"))
+		                .getAttribute("class"));
+
+		     
+		        System.out.println(driver.findElement(
+		                By.cssSelector(".nav-logo-link"))
+		                .getAttribute("class"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector(".nav-fill"))
+		                .getAttribute("class"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector(".nav-input"))
+		                .getAttribute("class"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector(".nav-searchbar"))
+		                .getAttribute("class"));
+
+		        // Attribute Selectors
+		       
+
+		      
+		        System.out.println(driver.findElement(
+		                By.cssSelector("input[name='field-keywords']"))
+		                .getAttribute("name"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.cssSelector("input[type='text']"))
+		                .getAttribute("type"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.cssSelector("select[id='searchDropdownBox']"))
+		                .getAttribute("id"));
+
+		     
+		        System.out.println(driver.findElement(
+		                By.cssSelector("input[placeholder='Search Amazon.in']"))
+		                .getAttribute("placeholder"));
+
+		     
+		        System.out.println(driver.findElement(
+		                By.cssSelector("input[value='Go']"))
+		                .getAttribute("value"));
+
+		        // Child Selectors >
+		       
+
+		      
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div#nav-belt > div"))
+		                .getAttribute("class"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector("form#nav-search-bar-form > div"))
+		                .getAttribute("class"));
+
+		       
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div.nav-search-field > input"))
+		                .getAttribute("id"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div#nav-tools > a"))
+		                .getAttribute("href"));
+
+//		        System.out.println(driver.findElement(
+//		                By.cssSelector("div#nav-xshop > a"))
+//		                .getText());
+
+		      
+		        // Descendant Selectors
+		       
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div.nav-search-field input"))
+		                .getAttribute("placeholder"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector("form#nav-search-bar-form input"))
+		                .getAttribute("type"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div#nav-tools a"))
+		                .getAttribute("href"));
+
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div#nav-xshop a"))
+		                .getText());
+
+		       
+		        System.out.println(driver.findElement(
+		                By.cssSelector("div.nav-fill select"))
+		                .getAttribute("title"));
+	
+//		        search product
+		        
+
+		        driver.findElement(By.id("twotabsearchtextbox"))
+		                .sendKeys("iPhone 15");
+
+		        driver.findElement(By.id("nav-search-submit-button"))
+		                .click();
+
+		        Thread.sleep(3000);
+
+		        // Print first product title
+
+		        System.out.println("=========== SEARCH RESULT ===========");
+
+		        System.out.println(driver.findElement(
+		                By.xpath("(//h2/span)[1]"))
+		                .getText());
+
+		        
+		        Thread.sleep(5000);
+
+		        driver.quit();
+		    
+	}
+
+}
