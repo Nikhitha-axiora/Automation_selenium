@@ -1,0 +1,139 @@
+package day2;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class saucedemo {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+
+        driver.manage().window().maximize();
+
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+
+        driver.findElement(By.id("login-button")).click();
+        
+//        id locator
+        System.out.println(driver.findElement(By.id("react-burger-menu-btn")).getText());
+
+        System.out.println(driver.findElement(By.id("shopping_cart_container")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.id("inventory_container")).getAttribute("id"));
+
+        System.out.println(driver.findElement(By.id("header_container")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.id("shopping_cart_container")).getText());
+
+        System.out.println(driver.findElement(By.id("react-burger-cross-btn")).getAttribute("id"));
+
+        System.out.println(driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).getText());
+
+        System.out.println(driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).getText());
+
+        System.out.println(driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).getText());
+
+        System.out.println(driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).getText());
+
+        System.out.println(driver.findElement(By.name("add-to-cart-sauce-labs-backpack")).getAttribute("name"));
+
+        System.out.println(driver.findElement(By.name("add-to-cart-sauce-labs-bike-light")).getText());
+
+        System.out.println(driver.findElement(By.name("add-to-cart-sauce-labs-bolt-t-shirt")).getText());
+
+        System.out.println(driver.findElement(By.name("add-to-cart-sauce-labs-fleece-jacket")).getText());
+
+        System.out.println(driver.findElement(By.name("add-to-cart-sauce-labs-onesie")).getText());
+
+        System.out.println(driver.findElement(By.name("add-to-cart-test.allthethings()-t-shirt-(red)")).getText());
+
+//        System.out.println(driver.findElement(By.name("remove-sauce-labs-backpack")).getAttribute("name"));
+//
+//        System.out.println(driver.findElement(By.name("remove-sauce-labs-bike-light")).getAttribute("name"));
+//
+//        System.out.println(driver.findElement(By.name("remove-sauce-labs-bolt-t-shirt")).getAttribute("name"));
+//
+//        System.out.println(driver.findElement(By.name("remove-sauce-labs-fleece-jacket")).getAttribute("name"));
+        
+//        name locator
+        
+        driver.findElement(By.name("add-to-cart-sauce-labs-backpack")).click();
+
+        driver.findElement(By.name("add-to-cart-sauce-labs-bike-light")).click();
+
+        driver.findElement(By.name("add-to-cart-sauce-labs-bolt-t-shirt")).click();
+
+        driver.findElement(By.name("add-to-cart-sauce-labs-fleece-jacket")).click();
+        Thread.sleep(2000);
+        //classname locator
+       System.out.println(driver.findElement(By.className("title")).getText());
+
+        System.out.println(driver.findElement(By.className("shopping_cart_link")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.className("app_logo")).getText());
+
+//        System.out.println(driver.findElement(By.className("peek")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.className("inventory_list")).getAttribute("class"));
+
+//        System.out.println(driver.findElement(By.className("footer_copy")).getText());
+
+//        System.out.println(driver.findElement(By.className("footer_robot")).getAttribute("src"));
+
+        System.out.println(driver.findElement(By.className("bm-burger-button")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.className("primary_header")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.className("header_label")).getAttribute("class"));
+       
+        //tag name locator
+        System.out.println(driver.findElement(By.tagName("button")).getText());
+
+        System.out.println(driver.findElement(By.tagName("div")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.tagName("span")).getText());
+
+        System.out.println(driver.findElement(By.tagName("a")).getAttribute("href"));
+
+        System.out.println(driver.findElement(By.tagName("img")).getAttribute("src"));
+
+        System.out.println(driver.findElement(By.tagName("footer")).getText());
+
+        System.out.println(driver.findElement(By.tagName("select")).getAttribute("class"));
+
+        System.out.println(driver.findElement(By.tagName("option")).getText());
+
+        System.out.println(driver.findElement(By.tagName("nav")).getAttribute("class"));
+
+//        System.out.println(driver.findElement(By.tagName("input")).getAttribute("placeholder"));
+        
+        //linktext locator
+        System.out.println(driver.findElement(By.linkText("Sauce Labs Backpack")).getText());
+
+        System.out.println(driver.findElement(By.linkText("Sauce Labs Bike Light")).getText());
+
+        System.out.println(driver.findElement(By.linkText("Sauce Labs Bolt T-Shirt")).getText());
+
+        System.out.println(driver.findElement(By.linkText("Sauce Labs Onesie")).getText());
+
+        System.out.println(driver.findElement(By.linkText("Test.allTheThings() T-Shirt (Red)")).getText());
+        
+        //partial linktext locator
+        System.out.println(driver.findElement(By.partialLinkText("Backpack")).getText());
+
+        System.out.println(driver.findElement(By.partialLinkText("Bike")).getText());
+
+        System.out.println(driver.findElement(By.partialLinkText("Bolt")).getText());
+
+        System.out.println(driver.findElement(By.partialLinkText("Onesie")).getText());
+
+        System.out.println(driver.findElement(By.partialLinkText("T-Shirt")).getText());
+        driver.quit();
+}}
+
