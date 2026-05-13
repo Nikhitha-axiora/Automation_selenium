@@ -1,0 +1,48 @@
+package javascriptexecutor;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class javascript_click {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://automationexercise.com/");
+
+		        JavascriptExecutor js =
+		                (JavascriptExecutor) driver;
+//		        Click Hidden/Outside Viewport Element
+
+		        // Scroll to Footer
+
+		        WebElement footer = driver.findElement(
+		                By.id("footer"));
+
+		        js.executeScript(
+		                "arguments[0].scrollIntoView(true)",
+		                footer);
+
+		        Thread.sleep(2000);
+
+		        // JS Click
+
+		        WebElement subscriptionButton =
+		                driver.findElement(By.id("subscribe"));
+
+		        js.executeScript(
+		                "arguments[0].click();",
+		                subscriptionButton);
+
+		        System.out.println("JavaScript Click Success");
+
+		        driver.quit();
+		    }
+		}
