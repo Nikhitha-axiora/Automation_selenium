@@ -1,0 +1,203 @@
+package full_website;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+public class automation_part1 {
+
+	
+		
+		
+
+		    static WebDriver driver;
+
+		    static WebDriverWait wait;
+		    public static void main(String[] args) {
+		    // =====================================================
+		    // MAIN METHOD
+		    // =====================================================
+
+		   
+		        launchBrowser();
+
+		        login();
+
+		        verifyProductsPage();
+
+		        addProductToCart("Sauce Labs Backpack");
+
+		        addProductToCart("Sauce Labs Bike Light");
+
+		        addProductToCart("Sauce Labs Bolt T-Shirt");
+
+		        verifyCartCount("3");
+
+		        openCart();
+
+		        verifyCartItem("Sauce Labs Backpack");
+
+		        verifyCartItem("Sauce Labs Bike Light");
+
+		        verifyCartItem("Sauce Labs Bolt T-Shirt");
+
+		        closeBrowser();
+		    }
+
+		    // =====================================================
+		    // LAUNCH BROWSER
+		    // =====================================================
+
+		    public static void launchBrowser() {
+
+		        driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        wait = new WebDriverWait(driver,
+		                Duration.ofSeconds(10));
+
+		        driver.get("https://www.saucedemo.com/");
+		    }
+
+		    // =====================================================
+		    // LOGIN METHOD
+		    // =====================================================
+
+		    public static void login() {
+
+		        wait.until(ExpectedConditions.visibilityOfElementLocated(
+		                By.id("user-name")))
+		                .sendKeys("standard_user");
+
+		        driver.findElement(By.id("password"))
+		                .sendKeys("secret_sauce");
+
+		        driver.findElement(By.id("login-button"))
+		                .click();
+
+		        System.out.println("Login Successful");
+		    }
+
+		    // =====================================================
+		    // VERIFY PRODUCTS PAGE
+		    // =====================================================
+
+		    public static void verifyProductsPage() {
+
+		        String actualTitle = wait.until(
+		                ExpectedConditions.visibilityOfElementLocated(
+		                        By.className("title")))
+		                .getText();
+
+		        System.out.println("Page Title : "
+		                + actualTitle);
+
+		        Assert.assertEquals(actualTitle, "Products");
+
+		        System.out.println("Products Page Verified");
+		    }
+
+		    // =====================================================
+		    // ADD PRODUCT TO CART
+		    // =====================================================
+
+		    public static void addProductToCart(String productName) {
+
+		        String xpath =
+		                "//div[text()='" + productName + "']" +
+		                "/ancestor::div[@class='inventory_item']" +
+		                "//button";
+
+		        WebElement addButton = wait.until(
+		                ExpectedConditions.elementToBeClickable(
+		                        By.xpath(xpath)));
+
+		        addButton.click();
+
+		        System.out.println(productName
+		                + " Added To Cart");
+		    }
+
+		    // =====================================================
+		    // VERIFY CART COUNT
+		    // =====================================================
+
+		    public static void verifyCartCount(String expectedCount) {
+
+		        String actualCount = wait.until(
+		                ExpectedConditions.visibilityOfElementLocated(
+		                        By.className("shopping_cart_badge")))
+		                .getText();
+
+		        System.out.println("Cart Count : "
+		                + actualCount);
+
+		        Assert.assertEquals(actualCount,
+		                expectedCount);
+
+		        System.out.println("Cart Count Verified");
+		    }
+
+		    // =====================================================
+		    // OPEN CART
+		    // =====================================================
+
+		    public static void openCart() {
+
+		        driver.findElement(
+		                By.className("shopping_cart_link"))
+		                .click();
+
+		        System.out.println("Cart Page Opened");
+		    }
+
+		    // =====================================================
+		    // VERIFY CART ITEMS
+		    // =====================================================
+
+		    public static void verifyCartItem(String expectedProduct) {
+
+		        List<WebElement> cartItems =
+		                driver.findElements(
+		                        By.className("inventory_item_name"));
+
+		        boolean productFound = false;
+
+		        for (WebElement item : cartItems) {
+
+		            String actualProduct = item.getText();
+
+		            if (actualProduct.equals(expectedProduct)) {
+
+		                productFound = true;
+
+		                break;
+		            }
+		        }
+
+		        Assert.assertTrue(productFound);
+
+		        System.out.println(expectedProduct
+		                + " Verified In Cart");
+		    }
+
+		    // =====================================================
+		    // CLOSE BROWSER
+		    // =====================================================
+
+		    public static void closeBrowser() {
+
+		        driver.quit();
+
+		        System.out.println("Browser Closed");
+		    }
+		
+}
