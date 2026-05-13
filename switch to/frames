@@ -1,0 +1,61 @@
+package switch_to;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class frame {
+
+	public static void main(String[] args) {
+	
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://the-internet.herokuapp.com/iframe");
+
+		        // =====================================================
+		        // SWITCH TO FRAME USING INDEX
+		        // =====================================================
+
+		        driver.switchTo().frame(0);
+
+		        WebElement textBox = driver.findElement(By.id("tinymce"));
+
+		        textBox.clear();
+
+		        textBox.sendKeys("Frame Handling Using Index");
+
+		        // Switch Back
+
+		        driver.switchTo().defaultContent();
+
+		        System.out.println("Switched Back Successfully");
+
+		        // =====================================================
+		        // SWITCH TO FRAME USING WEBELEMENT
+		        // =====================================================
+
+		        WebElement frameElement = driver.findElement(
+		                By.id("mce_0_ifr"));
+
+		        driver.switchTo().frame(frameElement);
+
+		        WebElement textBox2 = driver.findElement(By.id("tinymce"));
+
+		        textBox2.clear();
+
+		        textBox2.sendKeys("Frame Handling Using WebElement");
+
+		        // Switch Back
+
+		        driver.switchTo().defaultContent();
+
+		        System.out.println("Frame Handling Completed");
+
+		        driver.quit();
+		   
+	}
+
+}
