@@ -1,0 +1,45 @@
+package Waits;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class implicit_wait {
+
+	public static void main(String[] args) {
+		
+
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        // =====================================================
+		        // IMPLICIT WAIT
+		        // =====================================================
+
+		        driver.manage().timeouts()
+		                .implicitlyWait(Duration.ofSeconds(10));
+
+		        driver.get("https://www.amazon.in/");
+
+		        // Search Product
+
+		        driver.findElement(By.id("twotabsearchtextbox"))
+		                .sendKeys("iPhone 15");
+
+		        driver.findElement(By.id("nav-search-submit-button"))
+		                .click();
+
+		        // Print first product
+
+		        String firstProduct = driver.findElement(
+		                By.xpath("(//h2/span)[1]"))
+		                .getText();
+
+		        System.out.println("First Product : " + firstProduct);
+
+		        driver.quit();
+		    }
+		}
