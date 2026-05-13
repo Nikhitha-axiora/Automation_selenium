@@ -1,0 +1,33 @@
+package day1;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class nopcommerce {
+
+	public static void main(String[] args) {
+		ChromeDriver driver= new ChromeDriver();
+		
+		///get url
+	
+		driver.get("https://demo.nopcommerce.com/");
+		
+		///validate the title
+		
+		String act_title = driver.getTitle();
+System.out.println(act_title);		
+		if(act_title.equals("nopCommerce demo store. Home page title"))
+		{
+			System.out.println("Test passed");
+		}
+		else
+		{
+			System.out.println("Test failed");
+		}
+		
+		//close browser
+		
+		driver.close(); 
+	
+	}
+
+}
