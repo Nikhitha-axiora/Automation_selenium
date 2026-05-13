@@ -1,0 +1,42 @@
+package day2;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.sql.Driver;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class locators {
+
+	public static void main(String[] args) {
+		
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.demoblaze.com/index.html");
+		 driver.manage().window().maximize();
+		Boolean logoStatus=driver.findElement(By.id("nava")).isDisplayed();
+			    System.out.println(logoStatus);
+		driver.findElement(By.linkText("Phones")).click();
+			    driver.findElement(By.partialLinkText("Pho")).click();
+		List<WebElement> header_Links =driver.findElements(By.className("list-group-item"));
+			   System.out.println("Total no of header Links: " +header_Links.size());
+			   
+		List<WebElement> Links =driver.findElements(By.tagName("a"));
+			   System.out.println("Total no of  Links: " +Links.size());
+
+		List<WebElement> img =driver.findElements(By.tagName("img"));
+			   System.out.println("Total no of img:" +img.size());
+
+		List<WebElement> footer_Links =driver.findElements(By.className("list-group-item"));
+			   System.out.println("Total no of footer Links:" +footer_Links.size());
+
+//		  driver.quit();
+
+
+	}}
+
+}
