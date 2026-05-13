@@ -1,0 +1,156 @@
+package selectclass;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+public class automation_exercise {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://automationexercise.com");
+
+		        Thread.sleep(3000);
+
+//		       login page
+		        driver.findElement(By.xpath("//a[contains(text(),'Signup / Login')]"))
+		                .click();
+
+		        Thread.sleep(2000);
+
+//		       enter name n email
+		        driver.findElement(By.name("name"))
+		                .sendKeys("Nikki");
+
+		        driver.findElement(By.xpath("//input[@data-qa='signup-email']"))
+		                .sendKeys("nikki12345@gmail.com");
+
+		        driver.findElement(By.xpath("//button[contains(text(),'Signup')]"))
+		                .click();
+
+		        Thread.sleep(3000);
+
+//		       radio button
+		        WebElement titleRadio = driver.findElement(By.id("id_gender2"));
+
+		        titleRadio.click();
+
+		        Assert.assertTrue(titleRadio.isSelected());
+
+//		        password
+		        driver.findElement(By.id("password"))
+		                .sendKeys("Test@123");
+
+//		        dropdown using select class
+		        // Day Dropdown
+
+		        Select day = new Select(driver.findElement(By.id("days")));
+
+		        day.selectByVisibleText("10");
+
+		        // Month Dropdown
+
+		        Select month = new Select(driver.findElement(By.id("months")));
+
+		        month.selectByValue("5");
+
+		        // Year Dropdown
+
+		        Select year = new Select(driver.findElement(By.id("years")));
+
+		        year.selectByIndex(20);
+
+//		       checkboxes
+		        WebElement newsletterCheckbox = driver.findElement(By.id("newsletter"));
+
+		        newsletterCheckbox.click();
+
+		        Assert.assertTrue(newsletterCheckbox.isSelected());
+
+//		        WebElement offersCheckbox = driver.findElement(By.id("optin"));
+//
+//		        offersCheckbox.click();
+//
+//		        Assert.assertTrue(offersCheckbox.isSelected());
+
+//		        // Uncheck Example
+//
+//		        offersCheckbox.click();
+//
+//		        Assert.assertFalse(offersCheckbox.isSelected());
+
+//		       address
+		        driver.findElement(By.id("first_name"))
+		                .sendKeys("Nikhitha");
+
+		        driver.findElement(By.id("last_name"))
+		                .sendKeys("R");
+
+		        driver.findElement(By.id("company"))
+		                .sendKeys("Axiora");
+
+		        driver.findElement(By.id("address1"))
+		                .sendKeys("Hyderabad");
+
+		        driver.findElement(By.id("address2"))
+		                .sendKeys("India");
+
+		        // Country Dropdown
+
+		        Select country = new Select(driver.findElement(By.id("country")));
+
+		        country.selectByVisibleText("India");
+
+		        driver.findElement(By.id("state"))
+		                .sendKeys("Telangana");
+
+		        driver.findElement(By.id("city"))
+		                .sendKeys("Hyderabad");
+
+		        driver.findElement(By.id("zipcode"))
+		                .sendKeys("500001");
+
+		        driver.findElement(By.id("mobile_number"))
+		                .sendKeys("9876543210");
+
+//		        submit form
+		        driver.findElement(By.xpath("//button[contains(text(),'Create Account')]"))
+		        .click();
+
+		        Thread.sleep(5000);
+
+//		       verify success message
+		        WebElement successMessage = driver.findElement(
+		                By.xpath("//b[contains(text(),'Account Created!')]"));
+
+		        String actualMessage = successMessage.getText();
+
+		        System.out.println(actualMessage);
+
+		        Assert.assertEquals(actualMessage, "ACCOUNT CREATED!");
+
+		        Assert.assertTrue(successMessage.isDisplayed());
+
+		        Assert.assertNotNull(successMessage);
+
+		        System.out.println("REGISTRATION SUCCESSFUL");
+
+//		       continue button
+		        driver.findElement(By.xpath("//a[contains(text(),'Continue')]"))
+		                .click();
+
+		        Thread.sleep(3000);
+
+		       
+		        driver.quit();
+		    }
+		
+
+}
