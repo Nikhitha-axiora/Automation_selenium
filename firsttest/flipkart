@@ -1,0 +1,20 @@
+package day1;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+public class firsttest {
+
+	public static void main(String[] args) throws InterruptedException {
+		 WebDriver driver = new ChromeDriver();
+
+	        // Open Flipkart
+	        driver.get("https://www.flipkart.com");
+
+	        // Wait for 5 seconds
+	        Thread.sleep(5000);
+
+	        // Close browser
+	        driver.quit();
+	}
+
+}
