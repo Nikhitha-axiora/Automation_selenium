@@ -1,0 +1,73 @@
+package switch_to;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class windows {
+
+	public static void main(String[] args) {
+		
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://the-internet.herokuapp.com/windows");
+
+		        // =====================================================
+		        // GET PARENT WINDOW
+		        // =====================================================
+
+		        String parentWindow = driver.getWindowHandle();
+
+		        System.out.println("Parent Window : " + parentWindow);
+
+		        // =====================================================
+		        // OPEN NEW TAB/WINDOW
+		        // =====================================================
+
+		        driver.findElement(By.linkText("Click Here")).click();
+
+		        // =====================================================
+		        // GET ALL WINDOWS
+		        // =====================================================
+
+		        Set<String> allWindows = driver.getWindowHandles();
+
+		        // =====================================================
+		        // SWITCH TO CHILD WINDOW
+		        // =====================================================
+
+		        for (String window : allWindows) {
+
+		            if (!window.equals(parentWindow)) {
+
+		                driver.switchTo().window(window);
+
+		                System.out.println("Child Window Title : "
+		                        + driver.getTitle());
+
+		                System.out.println(driver.findElement(
+		                        By.tagName("h3")).getText());
+
+		                driver.close();
+		            }
+		        }
+
+		        // =====================================================
+		        // SWITCH BACK TO PARENT
+		        // =====================================================
+
+		        driver.switchTo().window(parentWindow);
+
+		        System.out.println("Parent Window Title : "
+		                + driver.getTitle());
+
+		        driver.quit();
+		    
+
+	}
+
+}
