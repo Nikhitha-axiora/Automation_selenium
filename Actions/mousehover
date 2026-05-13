@@ -1,0 +1,83 @@
+package Actions;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class mousehover {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+
+
+		
+
+		        WebDriver driver = new ChromeDriver();
+
+		        driver.manage().window().maximize();
+
+		        driver.get("https://www.amazon.in/");
+
+		        // =====================================================
+		        // EXPLICIT WAIT
+		        // =====================================================
+
+		        WebDriverWait wait =
+		                new WebDriverWait(driver,
+		                        Duration.ofSeconds(15));
+
+		        // =====================================================
+		        // ACTIONS CLASS
+		        // =====================================================
+
+		        Actions actions = new Actions(driver);
+
+		        // =====================================================
+		        // LOCATE ACCOUNTS & LISTS MENU
+		        // =====================================================
+
+		        WebElement accountsMenu = wait.until(
+		                ExpectedConditions.visibilityOfElementLocated(
+		                        By.id("nav-link-accountList")));
+
+		        // =====================================================
+		        // MOUSE HOVER
+		        // =====================================================
+
+		        actions.moveToElement(accountsMenu).perform();
+
+		        System.out.println("Mouse Hover Performed");
+
+		        // =====================================================
+		        // WAIT FOR DROPDOWN OPTION
+		        // =====================================================
+
+		        WebElement yourOrders = wait.until(
+		                ExpectedConditions.visibilityOfElementLocated(
+		                        By.xpath("//span[text()='Your Orders']")));
+
+		        // =====================================================
+		        // CLICK DROPDOWN OPTION
+		        // =====================================================
+
+		        yourOrders.click();
+
+		        System.out.println("Clicked Your Orders");
+
+		        // =====================================================
+		        // PRINT PAGE TITLE
+		        // =====================================================
+
+		        System.out.println(driver.getTitle());
+
+		        Thread.sleep(3000);
+
+		        driver.quit();
+		    }
+		}
